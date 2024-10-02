@@ -1,0 +1,278 @@
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname RN_SW01
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$U5iT$D8/2EIRLk/7D86pNnTB0n1
+!
+username admin privilege 15 secret 5 $1$sEHn$vdJn7IyvVnMgLne4eW2iM.
+!
+!
+no aaa new-model
+switch 1 provision ws-c3750-24p
+switch 6 provision ws-c3750-24p
+system mtu routing 1500
+ip domain-name railnet.int
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-29952640
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-29952640
+ revocation-check none
+ rsakeypair TP-self-signed-29952640
+!
+!
+crypto pki certificate chain TP-self-signed-29952640
+ certificate self-signed 01
+  30820247 308201B0 A0030201 02020101 300D0609 2A864886 F70D0101 04050030
+  2F312D30 2B060355 04031324 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 32393935 32363430 301E170D 39333033 30313030 30353231
+  5A170D32 30303130 31303030 3030305A 302F312D 302B0603 55040313 24494F53
+  2D53656C 662D5369 676E6564 2D436572 74696669 63617465 2D323939 35323634
+  3030819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 8100BF42
+  034F6A51 08F82981 35AE1AC8 17905E6B 09EBD92B F239EEEA AF336FF7 2DAB6CDF
+  35B869C5 F10A0B2C 7D2FEA2A F31EDF38 46A199A6 236D22A8 FD3806A0 AA556805
+  A805ACE1 C84100E6 5A2C7ED5 27927611 474F8A83 843E7FE5 A680C179 E03E914E
+  928CE4D6 4F4E74A6 3AF778D2 DB8456DD 96F194E5 37D39245 DA11F131 82690203
+  010001A3 73307130 0F060355 1D130101 FF040530 030101FF 301E0603 551D1104
+  17301582 13524E5F 53573031 2E726169 6C6E6574 2E696E74 301F0603 551D2304
+  18301680 1463977F 94A055F4 B6B5C521 4E99757B 8C5AF516 D1301D06 03551D0E
+  04160414 63977F94 A055F4B6 B5C5214E 99757B8C 5AF516D1 300D0609 2A864886
+  F70D0101 04050003 818100A9 5EE72B3C BB302CC4 7590FA11 F82B441F 154226B8
+  80CAB637 4BFFA3EC 7ABC9624 BA9794A3 ED87D013 0991D061 A3B108D7 FCD88770
+  F5216475 129EC5A9 0B79A6DD 7260C044 86B84819 594B5E61 1352296E 8E430310
+  704A8B7E 5393F1F8 CD1FDE81 7BB84264 FCC1F951 2AD34372 1324EB9E 049963E8
+  38CE7762 74EC41D3 5CAD5D
+  quit
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip ssh version 2
+!
+!
+!
+interface FastEthernet1/0/1
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet1/0/2
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet1/0/3
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet1/0/4
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet1/0/5
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet1/0/6
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet1/0/7
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet1/0/8
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet1/0/9
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet1/0/10
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet1/0/11
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet1/0/12
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet1/0/13
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet1/0/14
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet1/0/15
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet1/0/16
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet1/0/17
+!
+interface FastEthernet1/0/18
+!
+interface FastEthernet1/0/19
+!
+interface FastEthernet1/0/20
+!
+interface FastEthernet1/0/21
+ switchport access vlan 99
+ switchport mode access
+!
+interface FastEthernet1/0/22
+ switchport access vlan 99
+ switchport mode access
+!
+interface FastEthernet1/0/23
+!
+interface FastEthernet1/0/24
+!
+interface GigabitEthernet1/0/1
+ switchport access vlan 3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 3,15,99
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/2
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet6/0/1
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet6/0/2
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet6/0/3
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet6/0/4
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet6/0/5
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet6/0/6
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet6/0/7
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet6/0/8
+ switchport access vlan 3
+ switchport mode access
+!
+interface FastEthernet6/0/9
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet6/0/10
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet6/0/11
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet6/0/12
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet6/0/13
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet6/0/14
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet6/0/15
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet6/0/16
+ switchport access vlan 15
+ switchport mode access
+!
+interface FastEthernet6/0/17
+!
+interface FastEthernet6/0/18
+!
+interface FastEthernet6/0/19
+!
+interface FastEthernet6/0/20
+!
+interface FastEthernet6/0/21
+ switchport access vlan 99
+ switchport mode access
+!
+interface FastEthernet6/0/22
+ switchport access vlan 99
+ switchport mode access
+!
+interface FastEthernet6/0/23
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 3,15,99
+ switchport mode trunk
+!
+interface FastEthernet6/0/24
+!
+interface GigabitEthernet6/0/1
+!
+interface GigabitEthernet6/0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip default-gateway 192.168.25.5
+ip classless
+ip http server
+ip http secure-server
+!
+!
+!
+!
+vstack
+banner motd ^CCCCCRailNet B.V.
+alleen toegang met toestemming ICT-beheer!
+hostname - rn_sw01
+Naam beheerder: M ^C
+!
+line con 0
+line vty 0 4
+ login
+ transport input ssh
+line vty 5 15
+ login
+!
+end
+
