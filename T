@@ -1,0 +1,54 @@
+Dhcp
+
+New scope wizard^
+Ip adress range
+192.168.14.10
+192.168.15.10
+Subnet->255.255.254.0
+
+Router default gateway
+192.168.10.254
+
+
+Domain name and dns server^
+192.168.10.20
+Of 192.168.10.1 maar denk het niet dat is van testvm
+
+
+Dns ^
+Forward aaa
+192.168.10.25 
+
+
+Ip adapter server(volgens mij anders lokaal) 
+192.168.15.55
+255.255.255.0
+192.168.15.254
+
+172.16.0.5
+
+
+
+
+Linux manual^
+
+192.168.10.0/255 255.225.0
+
+Ip 192.168.10.25
+
+Default gateway 192.168.10 254
+
+Dns 192.168.10.20
+
+Starvista.int
+
+
+
+Rechter muisjlik dns 
+Properties
+Capgemeni forwarder
+172.16.0.5
+
+
+Starvista\Administrator
+Welkom01!
