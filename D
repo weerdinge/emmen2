@@ -1,0 +1,27 @@
+do
+
+Instelingen>uw pc naam > naam pc wijzigen > domein starvista.int>ip adapter 
+
+Computernaam eit onthouden 
+
+
+Switch verander 
+
+Conf t 
+Interface vlan 100
+Ip addres 192.168.25.5 255.255.255.0
+
+
+
+Switch
+Dhcp
+Adapter x2 
+Roaming profiles
+Policy 
+
+Linux
+Prtg
+
+
+
+Ik heb de policy toevoegd 
